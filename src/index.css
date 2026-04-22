@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-bg-deep: #05070a;
+  --color-bg-card: rgba(16, 22, 32, 0.7);
+  --color-accent-safe: #00f2ff;
+  --color-accent-danger: #ff3e3e;
+  --color-text-main: #e2e8f0;
+  --color-text-dim: #94a3b8;
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  
+  --shadow-glow-safe: 0 0 30px rgba(0, 242, 255, 0.2);
+  --shadow-glow-danger: 0 0 30px rgba(255, 62, 62, 0.2);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-deep text-text-main font-sans antialiased selection:bg-accent-safe selection:text-black;
+    background-image: radial-gradient(circle at 50% 50%, #0c1421 0%, #05070a 100%);
+    min-height: 100vh;
+  }
+}
+
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-accent-safe focus:ring-offset-2 focus:ring-offset-bg-deep;
+}
+
+.glass-card {
+  @apply bg-bg-card border border-glass-border rounded-[24px] p-6 shadow-2xl backdrop-blur-xl transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-accent-safe text-bg-deep font-bold px-6 py-3 rounded-xl transition-all duration-300 active:scale-95 hover:shadow-glow-safe disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply bg-white/5 border border-glass-border text-text-main font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:bg-white/10 active:scale-95;
+}
+
+.focus-circle {
+  @apply w-[280px] h-[280px] rounded-full border-4 border-glass-border flex flex-col items-center justify-center relative transition-all duration-500;
+  background: radial-gradient(circle, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
+}
+
+.focus-circle.active {
+  @apply border-accent-safe shadow-glow-safe;
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.2), inset 0 0 50px rgba(0, 242, 255, 0.1);
+}
+
+.power-btn {
+  @apply w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer mb-4;
+}
+
+.shield-icon-shape {
+  @apply w-8 h-8 bg-accent-safe shadow-glow-safe;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.nav-item-active {
+  @apply bg-accent-safe/10 text-accent-safe border-accent-safe/20;
+}
